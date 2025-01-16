@@ -9,15 +9,27 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:pptx.openVirtual",
+    "onDidChangeActiveTextEditor"
+  ],
   "contributes": {
     "commands": [
       {
-        "command": "pptx-viewer.helloWorld",
-        "title": "Hello World"
+        "command": "pptx.openVirtual",
+        "title": "Open PPTX Virtual Document"
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "pptx.openVirtual",
+          "when": "resourceExtname == .pptx",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
